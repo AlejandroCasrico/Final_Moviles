@@ -64,9 +64,9 @@ class LoginFinal : AppCompatActivity() {
                 1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
             )
 
-            // Add the volley post request to the request queue
-//            VolleySingleton.getInstance(this)
-//                .addToRequestQueue(request)
+            //Add the volley post request to the request queue
+            //VolleySingleton.getInstance(this)
+              //  .addToRequestQueue(request)
         }
     }
 }
