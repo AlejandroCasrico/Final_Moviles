@@ -3,4 +3,10 @@
     <string name="title_activity_maps">MapsActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingresar">ingresar</string>
+    <string name="usuario">usuario</string>
+    <string name="usuario1">usuario</string>
+    <string name="error">Contraseña incorrecta</string>
+    <string name="userPasswordError">Usuario o contraseña incorrectos</string>
+    <string name="serverError">Error de servidor</string>
 </resources>

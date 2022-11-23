@@ -20,20 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var buttonLogin: Button= findViewById(R.id.Final)
-        var buttonmapa: Button= findViewById(R.id.map)
-
-        buttonLogin.setOnClickListener(){
-            val intent = Intent (this,LoginFinal::class.java).apply{
-            }
-            startActivity(intent)
-        }
-        buttonmapa.setOnClickListener(){
-            val intent = Intent (this,MapsActivity::class.java).apply{
-            }
-            startActivity(intent)
-        }
-
         replaceFragment(infoFragment)
         var bottom_navigation :BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottom_navigation.setOnNavigationItemSelectedListener(){

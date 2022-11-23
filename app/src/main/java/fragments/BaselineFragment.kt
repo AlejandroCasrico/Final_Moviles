@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.example.pmovil2.R
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,20 +31,37 @@ class BaselineFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_baseline,container,false)
-        val Shpreferences = view.findViewById<Button>(R.id.preferences)
-        Shpreferences.setOnClickListener{
-            Log.d("element","valor")
-            val sharedPreference = this.requireActivity()
-                .getSharedPreferences("pref", Context.MODE_PRIVATE)
-            var editor = sharedPreference.edit()
-            editor.putString("username","Jesus")
-            editor.putBoolean("alreadyVisitedOnboarding",true)
-            editor.commit()
-        }
-        // Inflate the layout for this fragment
+        val view: View= inflater.inflate(R.layout.fragment_baseline, container, false)
         return view
+        // Inflate the layout for this fragment
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        (childFragmentManager.findFragmentById(
+            R.id.maps
+        ) as? SupportMapFragment)?.getMapAsync { googleMap ->
+
+
+            val mMap = googleMap
+            val zoomLevel = 4.0f
+            val direccion = LatLng(28.622839645061102, -106.11506317116468)
+            print(mMap.isMyLocationEnabled)
+            for(i in 0..2){
+                mMap.addMarker(
+                    MarkerOptions()
+                        .position(LatLng(28.622839645061102 +i, -106.11506317116468 +i))
+                        .title("Marker")
+                )
+            }
+            mMap.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(direccion,zoomLevel)
+            )
+        }
+    }
+
+
 
 
 }

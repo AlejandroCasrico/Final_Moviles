@@ -1,41 +1,49 @@
 package com.example.pmovil2
 
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-
 import org.json.JSONObject
 
 
-
 class LoginFinal : AppCompatActivity() {
+    private lateinit var btnLogin: Button
+    private lateinit var edtuserName: EditText
+    private lateinit var edtPassword: EditText
+    private lateinit var txtError: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_final)
+        val dialogView = layoutInflater.inflate(R.layout.errodialoglogin, null)
+        val dialog = AlertDialog.Builder(this).setView(dialogView).setTitle(" ").create()
 
-        val button = findViewById<Button>(R.id.buttonL)
-        val textView = findViewById<TextView>(R.id.textView1)
+        edtuserName = findViewById(R.id.userName)
+        edtPassword = findViewById(R.id.editTextTextPassword)
+        btnLogin = findViewById(R.id.buttonL)
+        txtError =  dialogView.findViewById(R.id.txtErrorLogin)
+        btnLogin.setOnClickListener {
 
-        textView.movementMethod = ScrollingMovementMethod()
 
-        button.setOnClickListener {
             // Disable the button itself
             it.isEnabled = false
 
-            val url = "https://postman-echo.com/post"
-            textView.text = ""
+            val url = "https://calm-red-coyote-tie.cyclic.app/users/login"
 
             // Post parameters
             // Form fields and values
             val params = HashMap<String,String>()
-            params["foo1"] = "bar1"
-            params["foo2"] = "bar2"
+            params["cor"] = edtuserName.text.toString()
+            params["pass"] = edtPassword.text.toString()
             val jsonObject = JSONObject(params as Map<*, *>?)
 
             // Volley post request with parameters
@@ -44,14 +52,29 @@ class LoginFinal : AppCompatActivity() {
                 { response ->
                     // Process the json
                     try {
-                        textView.text = "Response: $response"
+                        val intent= Intent(this,MainActivity::class.java).apply {  }
+                        startActivity(intent)
+                        //  Log.d("hola", "${response["message"]}")
+                        Toast.makeText(this, "${response["message"]}", Toast.LENGTH_LONG).show()
+
+
                     } catch (e: Exception) {
-                        textView.text = "Exception: $e"
+                        Toast.makeText(this, "Hubo algún error", Toast.LENGTH_LONG).show()
                     }
 
                 }, {
                     // Error in request
-                    textView.text = "Volley error: $it"
+//                    "Volley error: $it"
+//                    Log.d("Mi2",)
+                    if (it.networkResponse.statusCode == 400) {
+                        txtError.text = getString(R.string.userPasswordError)
+
+                    }else {
+                        txtError.text = getString(R.string.serverError)
+
+                    }
+                    dialog.show()
+                    btnLogin.isEnabled = true
                 })
 
 
@@ -64,9 +87,12 @@ class LoginFinal : AppCompatActivity() {
                 1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
             )
 
-            //Add the volley post request to the request queue
-            //VolleySingleton.getInstance(this)
-              //  .addToRequestQueue(request)
+            // Add the volley post request to the request queue
+            VolleySingleton.getInstance(this)
+                .addToRequestQueue(request)
+
+
         }
+
     }
 }
