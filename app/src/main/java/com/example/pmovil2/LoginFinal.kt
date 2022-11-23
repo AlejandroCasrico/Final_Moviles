@@ -27,7 +27,7 @@ class LoginFinal : AppCompatActivity() {
         val dialogView = layoutInflater.inflate(R.layout.errodialoglogin, null)
         val dialog = AlertDialog.Builder(this).setView(dialogView).setTitle(" ").create()
 
-        edtuserName = findViewById(R.id.userName)
+        edtuserName = findViewById(R.id.edtTxtNameLogin)
         edtPassword = findViewById(R.id.editTextTextPassword)
         btnLogin = findViewById(R.id.buttonL)
         txtError =  dialogView.findViewById(R.id.txtErrorLogin)

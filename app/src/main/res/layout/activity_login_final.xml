@@ -39,10 +39,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtNameLogin" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/edtTxtNameLogin"
         android:layout_width="303dp"
         android:layout_height="62dp"
         android:layout_marginTop="80dp"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/usuario1"
-        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtNameLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,5 +75,5 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtNameLogin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
