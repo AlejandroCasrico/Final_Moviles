@@ -3,6 +3,7 @@ package com.example.pmovil2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -42,7 +43,7 @@ class LoginFinal : AppCompatActivity() {
             // Post parameters
             // Form fields and values
             val params = HashMap<String,String>()
-            params["cor"] = edtuserName.text.toString()
+            params["User"] = edtuserName.text.toString()
             params["pass"] = edtPassword.text.toString()
             val jsonObject = JSONObject(params as Map<*, *>?)
 
@@ -54,7 +55,7 @@ class LoginFinal : AppCompatActivity() {
                     try {
                         val intent= Intent(this,MainActivity::class.java).apply {  }
                         startActivity(intent)
-                        //  Log.d("hola", "${response["message"]}")
+                        Log.d("hola", "${response["message"]}")
                         Toast.makeText(this, "${response["message"]}", Toast.LENGTH_LONG).show()
 
 
