@@ -4,15 +4,29 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="180dp"
+        android:layout_height="168dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lego" />
 
     <TextView
         android:id="@+id/txtErrorLogin"
-        android:layout_width="157dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="180dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="48dp"
         android:text="@string/error"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

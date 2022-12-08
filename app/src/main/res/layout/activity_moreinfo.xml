@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Moreinfo">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#03A9F4"
+
+        app:itemTextColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="32dp"
+        android:text="Proyecto Final"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/integrantes2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/integrantes2"
+        android:layout_width="203dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="460dp"
+        android:text="Integrantes"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="203dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="80dp"
+        android:text="descripcion"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/materia"
+        android:layout_width="145dp"
+        android:layout_height="53dp"
+        android:text="materia"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.321" />
+
+    <TextView
+        android:id="@+id/name2"
+        android:layout_width="142dp"
+        android:layout_height="41dp"
+        android:text="Jesus Rojas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="142dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="Programacion de disp.moviles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name2"
+        app:layout_constraintTop_toBottomOf="@+id/materia" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="142dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="24dp"
+        android:text="Alejandro Casillas Rico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/integrantes2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="283dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="44dp"
+        android:text="Real State, somos un lugar seguro para el que quiere publicitar sus viviendas de forma sencilla, rápida y segura al alcance de su mano, en cuestión de minutos tendrás podrás publicar o estar en búsqueda de tu próximo hogar!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

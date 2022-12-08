@@ -22,11 +22,17 @@
         android:layout_width="207dp"
         android:layout_height="63dp"
         android:layout_marginTop="44dp"
+        android:background="#2196F3"
+        android:backgroundTint="#2196F3"
+        android:backgroundTintMode="screen"
+        android:hapticFeedbackEnabled="false"
         android:text="@string/ingresar"
+        android:textColor="#212121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:strokeColor="#2A7FAC" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -48,7 +54,7 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="@string/usuario"
-        android:inputType="textPassword"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.731"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,4 +82,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtNameLogin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

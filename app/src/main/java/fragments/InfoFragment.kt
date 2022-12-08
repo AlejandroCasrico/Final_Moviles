@@ -1,22 +1,24 @@
 package fragments
 
+
 import HousesModel
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.pmovil2.R
 import com.example.pmovil2.VolleySingleton
-
-
 import com.google.gson.Gson
 import org.json.JSONObject
 
@@ -44,13 +46,21 @@ class InfoFragment : Fragment() {
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.swipe)
 
         val lvData = view.findViewById<ListView>(R.id.lvDatos)
         getHouses(lvData, view)
+        swipe.setOnRefreshListener {
+            Handler(Looper.getMainLooper()).postDelayed({
+                Log.d("reloading", "hola")
+                getHouses(lvData, view)
+                swipe.isRefreshing =false
+            },2000)
 
+        }
     }
     fun getHouses( layout :ListView, view: View)  {
-        val url = "https://calm-red-coyote-tie.cyclic.app/houses/getProperty"
+        val url = "https://calm-red-coyote-tie.cyclic.app/houses/findProperty"
         house = HousesModel()
 
         // Post parameters
@@ -74,7 +84,7 @@ class InfoFragment : Fragment() {
                     house = responseObject
 
                     for (house in responseObject.obj) {
-                        houses.add(house.name.toString())
+                        houses.add(house.houseName.toString())
 
                     }
                     arrayAdapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, houses)

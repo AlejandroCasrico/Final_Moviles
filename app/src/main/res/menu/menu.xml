@@ -10,6 +10,6 @@
         android:title="maps"/>
     <item
         android:id="@+id/ic_settin"
-        android:icon="@drawable/ic_settin"
-        android:title="setting"/>
+        android:icon="@drawable/ic_account"
+        android:title="account"/>
 </menu>

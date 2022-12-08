@@ -32,68 +32,80 @@ class LoginFinal : AppCompatActivity() {
         edtPassword = findViewById(R.id.editTextTextPassword)
         btnLogin = findViewById(R.id.buttonL)
         txtError =  dialogView.findViewById(R.id.txtErrorLogin)
+
         btnLogin.setOnClickListener {
 
+            if (edtPassword.text.toString().isEmpty() || edtuserName.text.toString().isEmpty()) {
+                if (edtPassword.text.toString().isEmpty()) {
+                    txtError.setText("Porfavor ingrese una contraseña")
+                } else {
+                    txtError.setText("Porfavor ingrese un usuario")
+                }
+                dialog.show()
 
-            // Disable the button itself
-            it.isEnabled = false
+            } else {
+                // Disable the button itself
+                it.isEnabled = false
 
-            val url = "https://calm-red-coyote-tie.cyclic.app/users/login"
+                val url = "https://calm-red-coyote-tie.cyclic.app/users/login"
 
-            // Post parameters
-            // Form fields and values
-            val params = HashMap<String,String>()
-            params["User"] = edtuserName.text.toString()
-            params["pass"] = edtPassword.text.toString()
-            val jsonObject = JSONObject(params as Map<*, *>?)
+                // Post parameters
+                // Form fields and values
+                val params = HashMap<String, String>()
+                params["userName"] = edtuserName.text.toString()
+                params["password"] = edtPassword.text.toString()
+                val jsonObject = JSONObject(params as Map<*, *>?)
 
-            // Volley post request with parameters
-            val request = JsonObjectRequest(
-                Request.Method.POST,url,jsonObject,
-                { response ->
-                    // Process the json
-                    try {
-                        val intent= Intent(this,MainActivity::class.java).apply {  }
-                        startActivity(intent)
-                        Log.d("hola", "${response["message"]}")
-                        Toast.makeText(this, "${response["message"]}", Toast.LENGTH_LONG).show()
+                // Volley post request with parameters
+                val request = JsonObjectRequest(
+                    Request.Method.POST, url, jsonObject,
+                    { response ->
+                        // Process the json
+                        try {
+                            val intent = Intent(this, MainActivity::class.java).apply { }
+                            startActivity(intent)
+                            Log.d("hola", "${response["message"]}")
+                            Toast.makeText(this, "${response["message"]}", Toast.LENGTH_LONG).show()
 
 
-                    } catch (e: Exception) {
-                        Toast.makeText(this, "Hubo algún error", Toast.LENGTH_LONG).show()
-                    }
+                        } catch (e: Exception) {
+                            Toast.makeText(this, "Hubo algún error", Toast.LENGTH_LONG).show()
+                        }
 
-                }, {
-                    // Error in request
+                    }, {
+                        // Error in request
 //                    "Volley error: $it"
 //                    Log.d("Mi2",)
-                    if (it.networkResponse.statusCode == 400) {
-                        txtError.text = getString(R.string.userPasswordError)
+                        if (it.networkResponse.statusCode == 400) {
+                            txtError.text = getString(R.string.userPasswordError)
 
-                    }else {
-                        txtError.text = getString(R.string.serverError)
+                        } else {
+                            txtError.text = getString(R.string.serverError)
 
-                    }
-                    dialog.show()
-                    btnLogin.isEnabled = true
-                })
-
-
-            // Volley request policy, only one time request to
-            // avoid duplicate transaction
-            request.retryPolicy = DefaultRetryPolicy(
-                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
-                // 0 means no retry
-                0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
-                1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
-            )
-
-            // Add the volley post request to the request queue
-            VolleySingleton.getInstance(this)
-                .addToRequestQueue(request)
+                        }
+                        dialog.show()
+                        btnLogin.isEnabled = true
+                    })
 
 
+                // Volley request policy, only one time request to
+                // avoid duplicate transaction
+                request.retryPolicy = DefaultRetryPolicy(
+                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                    // 0 means no retry
+                    0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+                    1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                )
+
+                // Add the volley post request to the request queue
+                VolleySingleton.getInstance(this)
+                    .addToRequestQueue(request)
+
+
+            }
         }
-
+    }
+    override fun onBackPressed() {
+        return
     }
 }
